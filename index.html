@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>test task</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<h1>Test Task for Ixora</h1>
+<button onclick="showForm('changeForm')">Change position</button>
+<button onclick="showForm('addForm')">Add position</button>
+<button onclick="showForm('deleteForm')">Delete position</button>
+<button onclick="window.print()">Print</button>
+<div class="forms">
+    <div id="changeForm" class="crud" style="display: none">
+        <table>
+            <th>
+                Change position
+            </th>
+            <tr>
+                <td>Id: <input type="text" id="changeId" /></td>
+            </tr>
+            <tr>
+                <td>Supplier: <input type="text" id="changeSupplier" /></td>
+            </tr>
+            <tr>
+                <td>Warehouse: <input type="text" id="changeWarehouse" /></td>
+            </tr>
+            <tr>
+                <td>Product: <input type="text" id="changeProduct" /></td>
+            </tr>
+            <tr>
+                <td>Quantity: <input type="text" id="changeQuantity" /></td>
+            </tr>
+            <tr>
+                <td>Sum: <input type="text" id="changeSum" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="changePosition()">Change</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div id="addForm" class="crud" style="display: none">
+        <table>
+            <th>
+                Add position
+            </th>
+            <tr>
+                <td>Supplier: <input type="text" id="addSupplier" /></td>
+            </tr>
+            <tr>
+                <td>Warehouse: <input type="text" id="addWarehouse" /></td>
+            </tr>
+            <tr>
+                <td>Product: <input type="text" id="addProduct" /></td>
+            </tr>
+            <tr>
+                <td>Quantity: <input type="text" id="addQuantity" /></td>
+            </tr>
+            <tr>
+                <td>Sum: <input type="text" id="addSum" /></td>
+            </tr>
+            <tr>
+                <td>
+                    <button onclick="addPosition()">Add</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="deleteForm" class="crud" style="display: none">
+        <table>
+            <th>
+                Delete position
+            </th>
+            <tr>
+                <td>Id: <input type="text" id="deleteId" /></td>
+            </tr>
+            <td>
+                <button onclick="deletePosition()">Delete</button>
+            </td>
+        </table>
+    </div>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>Id
+            <select id="filterId" onchange="dataChange(this.value);">
+            </select></th>
+        <th>Date
+            <select id="filterDate" onchange="dataChange(this.value);">
+            </select></th>
+        <th>Supplier
+            <select id="filterSupplier" onchange="dataChange(this.value);">
+            </select>
+        </th>
+        <th>Warehouse
+            <select id="filterWarehouse" onchange="dataChange(this.value);">
+            </select>
+        </th>
+        <th>Product
+            <select id="filterProduct" onchange="dataChange(this.value);">
+            </select>
+        </th>
+        <th>Quantity
+            <select id="filterQuantity" onchange="dataChange(this.value);">
+            </select>
+        </th>
+        <th>Sum
+            <select id="filterSum" onchange="dataChange(this.value);">
+            </select>
+        </th>
+    </tr>
+    </thead>
+    <tbody id="tbody01">
+    </tbody>
+</table>
+</body>
+</html>
