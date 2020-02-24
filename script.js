@@ -1,22 +1,16 @@
 let db;
-//database varsion setting
 let version = 1.0;
-//database name setting
 let dbName = "ixora";
-//database display name setting
 let dbDisplayName = "ixora_test_db";
-//database size setting
 let dbSize = 2 * 1024 * 1024;
 
 function selectDB() {
     if (window.openDatabase) {
-        //openDatabase(name, version, displayname, estimatedsize, callback);
         db = openDatabase(dbName, version, dbDisplayName, dbSize);
 
         dropTable(db);
         createTable(db);
 
-        //inserting data in table
         insertData(db, "BMW", "Minina 33", "engine", 2, 100000);
         insertData(db, "Toyota", "Gorky 20/10", "rear window", 10, 200000);
         insertData(db, "Kia", "Gagarina 110", "wing", 5, 50000);
@@ -30,7 +24,6 @@ function selectDB() {
     }
 }
 
-//reads and displays values from the 'places' table
 function dataView(db) {
     let table = document.getElementById("tbody01");
     let filterId = document.getElementById("filterId");
@@ -77,14 +70,12 @@ function dataView(db) {
     });
 }
 
-// create table
 function createTable(db) {
     db.transaction(function (t) {
         t.executeSql('CREATE TABLE ixoraTable (id INTEGER PRIMARY KEY, date DATETIME, supplier TEXT, warehouse TEXT, product TEXT, quantity INTEGER, sum INTEGER)', []);
     });
 }
 
-//inserting data in table
 function insertData(db, supplier, warehouse, product, quantity, sum) {
     db.transaction(function (e) {
         let day = new Date();
@@ -95,14 +86,12 @@ function insertData(db, supplier, warehouse, product, quantity, sum) {
 function onSuccess(e) { }
 function onError(e) { }
 
-// drop table
 function dropTable(db) {
     db.transaction(function (t) {
         t.executeSql('DROP TABLE ixoraTable');
     });
 }
 
-//Select the data conditions
 function dataChange(value) {
     if (value != "all") {
         let table = document.getElementById("tbody01");
